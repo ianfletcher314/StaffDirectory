@@ -1,51 +1,46 @@
-import React, { Component } from "react";
-import Search from "../Search/Search";
-import Table from "../Table/Table";
-import API from "../utils/API";
+import React, {useEffect, useState} from "react";
 
-class Staff extends Component {
-  state = {
-    search: "",
-    results: []
-  };
+function Staff() {
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [items, setItems] = useState([]);
+  
+    // Note: the empty deps array [] means
+    // this useEffect will run once
+    // similar to componentDidMount()
+    useEffect(() => {
+      fetch("https://randomuser.me/api/?results=20")
 
-  // When this component mounts, search the Giphy API for pictures of kittens
-  componentDidMount() {
-    this.searchGiphy("kittens");
+        .then(res => res.json())
+        .then(
+          (result) => {
+            setIsLoaded(true);
+            setItems(result);
+          },
+          // Note: it's important to handle errors here
+          // instead of a catch() block so that we don't swallow
+          // exceptions from actual bugs in components.
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        )
+    }, [])
+  
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      return (
+        <ul>
+          {items.map(item => (
+            <li key={item.id}>
+              {item.name} {item.price}
+            </li>
+          ))}
+        </ul>
+      );
+    }
   }
-
-  searchGiphy = query => {
-    API.search(query)
-      .then(res => this.setState({ results: res.data.data }))
-      .catch(err => console.log(err));
-  };
-
-  handleInputChange = event => {
-    const name = event.target.name;
-    const value = event.target.value;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  // When the form is submitted, search the Giphy API for `this.state.search`
-  handleFormSubmit = event => {
-    event.preventDefault();
-    this.searchGiphy(this.state.search);
-  };
-
-  render() {
-    return (
-      <div>
-        <Search
-          search={this.state.search}
-          handleFormSubmit={this.handleFormSubmit}
-          handleInputChange={this.handleInputChange}
-        />
-        <Table results={this.state.results} />
-      </div>
-    );
-  }
-}
-
-export default Staff;
+  export default Staff
