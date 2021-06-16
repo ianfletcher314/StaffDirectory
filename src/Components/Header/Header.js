@@ -3,13 +3,7 @@ import React from "react";
 function Header() {
   return (
     <div>
-      <h1>Hey guys! I'm a header!</h1>
-      <h2>Things I like!</h2>
-      <ul>
-        <li>Peas</li>
-        <li>Carrots</li>
-        <li>Love</li>
-      </ul>
+      <h1>THIS IS THE HEADER</h1>
     </div>
   );
 }
