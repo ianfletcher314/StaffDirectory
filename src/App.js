@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Components/Header/Header"
 import Search from "./Components/Search/Search";
-import Table from "./Components/Table/Table";
+import DenseTable from "./Components/Table/Table";
 import Staff from "./Components/Staff/Staff";
 
 
@@ -10,7 +10,7 @@ function App() {
     <Header />,
     <Search />,
     <Staff />,
-    <Table />;
+    <DenseTable />;
 
   </div>
 
