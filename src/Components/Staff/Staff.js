@@ -1,7 +1,8 @@
-import React, {useEffect,} from "react";
+import React, {useEffect, useState,} from "react";
 import "./style.css"
 
-function Staff(info) {
+function Staff() {
+  const [info,setInfo] = useState([])
  
     useEffect(() => {
       fetch("https://randomuser.me/api/?results=20")
@@ -9,7 +10,7 @@ function Staff(info) {
         .then(res => res.json())
         .then(
           (results) => {
-          info = results
+            setInfo(results.results)
             console.log(results)
           },
      
@@ -22,10 +23,9 @@ function Staff(info) {
   
       return (
           <div>
-          <p>cool guys</p>,
-          {/* <p>{info}</p> */}
+          <p>cool guys</p>
+          {info.length && info[1].name.first}
           </div>
- 
       );
     
   }
