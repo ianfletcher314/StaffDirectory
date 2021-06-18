@@ -35,11 +35,11 @@ const [searchName,setSearchName] = useState("")
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>Employee</TableCell>
+            <TableCell align="right">Empoyee Email</TableCell>
+            <TableCell align="right">Age&nbsp;</TableCell>
+            <TableCell align="right">Phone&nbsp;</TableCell>
+            <TableCell align="right">Location&nbsp;</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -47,10 +47,15 @@ const [searchName,setSearchName] = useState("")
           {info.filter(row => row.name.first.includes(searchName)).map((row) => (
             <TableRow key={row.name.first}>
               <TableCell component="th" scope="row">
+              <img alt="alt" src= {row.picture.large}></img>
                 {row.name.first} {row.name.last}
+                
               </TableCell>
-              <TableCell align="right">{row.name.first}</TableCell>
-              <TableCell align="right">{row.name.last}</TableCell>
+              <TableCell align="right">{row.email}</TableCell>
+              <TableCell align="right">{row.dob.age}</TableCell>
+         
+              <TableCell align="right">{row.phone}</TableCell>
+              <TableCell align="right">{row.location.country}</TableCell>
             </TableRow>
           ))}
         </TableBody>
