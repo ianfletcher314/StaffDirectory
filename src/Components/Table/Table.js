@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+// import search
 
 const useStyles = makeStyles({
   table: {
@@ -26,9 +27,9 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-export default function DenseTable() {
+export default function DenseTable({info,setInfo}) {
   const classes = useStyles();
-
+const [searchName,setSearchName] = useState("")
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} size="small" aria-label="a dense table">
@@ -42,15 +43,14 @@ export default function DenseTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
+          {/* map over states for the staff */}
+          {info.filter(row => row.name.first.includes(searchName)).map((row) => (
+            <TableRow key={row.name.first}>
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.name.first} {row.name.last}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{row.name.first}</TableCell>
+              <TableCell align="right">{row.name.last}</TableCell>
             </TableRow>
           ))}
         </TableBody>
