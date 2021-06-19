@@ -5,11 +5,7 @@ import  Table from "../Table/Table"
 function Staff() {
   const [info,setInfo] = useState([])
  
-    const sortByAge = () => {
-      const newInfo = [...info]
-      newInfo.sort((a, b) => a.dob.age - b.dob.age)
-      setInfo(newInfo)
-    }
+   
     
     useEffect(() => {
       fetch("https://randomuser.me/api/?results=10")
@@ -33,7 +29,7 @@ function Staff() {
           <div>
            
           <p>cool guys</p>
-          {info.length &&  <Table info={info} setInfo={setInfo}/>}
+          {info.length &&  <Table info={info} setInfo={setInfo} />}
           </div>
       );
     

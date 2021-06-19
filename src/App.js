@@ -7,7 +7,6 @@ import Staff from "./Components/Staff/Staff";
 function App() {
   return <div>
     <Header />
-    <Search />
     <Staff />
 
 

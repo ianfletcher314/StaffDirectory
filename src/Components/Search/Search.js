@@ -1,6 +1,5 @@
 import React from "react";
 import "./style.css"
-import TextField from '@material-ui/core/TextField';
 
 function Search(props) {
   return (
@@ -17,14 +16,8 @@ function Search(props) {
           id="search"
         />
         <br />
-        <TextField
-          required
-          id="filled-required"
-          label="Required"
-          defaultValue="Hello World"
-          variant="filled"
-        />
-        <button onClick={props.handleFormSubmit} className="btn btn-primary">
+
+        <button onClick={props.setSearchName} className="btn btn-primary">
           Search
         </button>
       </div>
