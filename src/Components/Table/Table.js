@@ -59,6 +59,7 @@ export default function DenseTable({ info, setInfo }) {
         <TableHead>
           <TableRow>
             <TableCell>Employee</TableCell>
+            <TableCell>Name</TableCell>
             <TableCell align="right">Empoyee Email</TableCell>
             <TableCell className="blue-text" align="right" onClick={() => { sortByAge() }}>Age (click to sort)&nbsp;</TableCell>
             <TableCell align="right">Phone&nbsp;</TableCell>
@@ -71,9 +72,10 @@ export default function DenseTable({ info, setInfo }) {
             <TableRow key={row.name.first}>
               <TableCell component="th" scope="row">
                 <img alt="alt" src={row.picture.large}></img>
-                {row.name.first} {row.name.last}
+                
 
               </TableCell>
+              <TableCell align="right">{row.name.first} {row.name.last}</TableCell>
               <TableCell align="right">{row.email}</TableCell>
               <TableCell align="right">{row.dob.age}</TableCell>
 
