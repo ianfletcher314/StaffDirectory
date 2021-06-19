@@ -16,7 +16,7 @@ function Search(props) {
         />
         <br />
 
-        <button onClick={props.setSearchName} className="center btn btn-flat waves-effect waves-light" >
+        <button onClick={props.setSearchName} className="center btn btn-flat waves-effect purple white-text" >
           Search
         </button>
         <br /> <br />  <br />  <br />
