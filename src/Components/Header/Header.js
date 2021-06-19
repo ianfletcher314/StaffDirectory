@@ -3,9 +3,11 @@ import "./style.css"
 
 function Header() {
   return (
-    <div>
-      <h1>THIS IS THE HEADER</h1>
+    <nav>
+    <div className="nav-wrapper purple accent-5">
+      <a href="/" className="brand-logo right">Company Directory</a>
     </div>
+  </nav>
   );
 }
 

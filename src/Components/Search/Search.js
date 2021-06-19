@@ -4,22 +4,23 @@ import "./style.css"
 function Search(props) {
   return (
     <form>
-      <div className="form-group">
-        <label htmlFor="search">Search:</label>
+      <div className="form-group center " >
         <input
           onChange={props.handleInputChange}
           value={props.value}
           name="search"
           type="text"
-          className="form-control"
+          className="form-control center"
           placeholder="Search Directory"
           id="search"
         />
         <br />
 
-        <button onClick={props.setSearchName} className="btn btn-primary">
+        <button onClick={props.setSearchName} className="center btn btn-flat waves-effect waves-light" >
           Search
         </button>
+        <br /> <br />  <br />  <br />
+        <hr></hr>
       </div>
     </form>
   );

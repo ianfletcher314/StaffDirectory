@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,8 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Search from "../Search/Search"
-// import search
+import Search from "../Search/Search";
 
 
 const useStyles = makeStyles({
@@ -18,17 +17,8 @@ const useStyles = makeStyles({
 });
 
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+
 export default function DenseTable({ info, setInfo }) {
   const [sorted, setSort] = useState(false)
 
@@ -62,14 +52,15 @@ export default function DenseTable({ info, setInfo }) {
 
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className="container">
+      <div className="container">
       <Search handleInputChange={handleInputChange} />
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
             <TableCell>Employee</TableCell>
             <TableCell align="right">Empoyee Email</TableCell>
-            <TableCell align="right" onClick={() => { sortByAge() }}>Age&nbsp;</TableCell>
+            <TableCell className="blue-text" align="right" onClick={() => { sortByAge() }}>Age (click to sort)&nbsp;</TableCell>
             <TableCell align="right">Phone&nbsp;</TableCell>
             <TableCell align="right">Location&nbsp;</TableCell>
           </TableRow>
@@ -92,6 +83,7 @@ export default function DenseTable({ info, setInfo }) {
           ))}
         </TableBody>
       </Table>
+      </div>
     </TableContainer>
   );
 }

@@ -26,9 +26,7 @@ function Staff() {
    
   
       return (
-          <div>
-           
-          <p>cool guys</p>
+          <div >
           {info.length &&  <Table info={info} setInfo={setInfo} />}
           </div>
       );
